@@ -27,12 +27,16 @@
         },
     ]
 
+    $:total = articleArray.reduce((acc, curr)=>{
+        return acc += curr.price;
+    }, 0)
+
     function addArticle(event) {
         // console.log(event.detail)
         let newEntry= { id: uuidv4(), name: event.detail.name, price: event.detail.price};
         articleArray= [newEntry, ...articleArray];
         
-        console.log('new Array : ',articleArray);
+        // console.log('new Array : ',articleArray);
     }
 
     function removeArticle(event) {
@@ -77,7 +81,7 @@
     <Form on:newEntryArticle={addArticle} />
 
     <h2 class="container-title">
-        Total expenses : <span class="container-amount">$ XXXX</span>
+        Total expenses : <span class="container-amount">$ {total}</span>
     </h2>
     <hr>
 
