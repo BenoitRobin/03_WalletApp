@@ -28,11 +28,16 @@
     ]
 
     function addArticle(event) {
-        console.log(event.detail)
+        // console.log(event.detail)
         let newEntry= { id: uuidv4(), name: event.detail.name, price: event.detail.price};
         articleArray= [newEntry, ...articleArray];
         
         console.log('new Array : ',articleArray);
+    }
+
+    function removeArticle(event) {
+        // console.log(event.detail.id)
+        articleArray = articleArray.filter(item => item.id != event.detail.id)
     }
 
     
@@ -79,8 +84,10 @@
     {#each articleArray as article (article.id)}
     
     <Card 
-        name= {article.name}
-        price= {article.price}
+        id={article.id}
+        name={article.name}
+        price={article.price}
+        on:deleteItem={removeArticle}
     />
 
     {/each}

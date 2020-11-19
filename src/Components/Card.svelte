@@ -1,6 +1,17 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
     export let name;
-    export let price
+    export let price;
+    export let id;
+
+    function deleteArticle(){
+        console.log('clique');
+
+        dispatch('deleteItem', {id: id})
+    }
 </script>
 
 <!-- MON STYLE -->
@@ -40,6 +51,7 @@
 
     &-picto {
         width: 1em;
+        cursor: pointer;
     }
 }
 
@@ -52,7 +64,7 @@
         </h2>
         <p class="card-info--amount">$ {price}</p>
     </div>
-    <div class="card-picto">
+    <div class="card-picto" on:click={deleteArticle}>
         <img src="assets/trash-solid.svg" alt="trash">
     </div>
 </div>
