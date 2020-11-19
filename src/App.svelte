@@ -1,10 +1,12 @@
 <script>
+	import Navbar from './Components/Navbar.svelte'
 </script>
 
 
 
 <style type="text/scss">
-	
+@import './styles/variables.scss';
+
 </style>
 
-<h1>Hello</h1>
+<Navbar />
